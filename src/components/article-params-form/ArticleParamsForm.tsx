@@ -48,18 +48,19 @@ export const ArticleParamsForm = ({
 		applyOptions(selectedOptions);
 	};
 
-	const handleResetSideMenu = () => {
+	const handleResetSideMenu = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		setSelectedOptions(defaultArticleState);
 		applyOptions(defaultArticleState);
 	};
 
 	function handleOptionsChange(
-		optionKey: keyof ArticleStateType,
+		optionType: keyof ArticleStateType,
 		value: OptionType
 	) {
 		setSelectedOptions((prevOption) => ({
 			...prevOption,
-			[optionKey]: value,
+			[optionType]: value,
 		}));
 	}
 
